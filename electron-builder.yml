@@ -31,6 +31,8 @@ linux:
   target:
     - AppImage
     - deb
+    - pacman
+    - rpm
   maintainer: purrfect-farmer.github.io
   category: Utility
 appImage:
