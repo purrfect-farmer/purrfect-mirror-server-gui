@@ -19,6 +19,7 @@ function ContactLink(props) {
         'p-2 font-bold',
         'hover:bg-orange-500 hover:text-white',
         'font-turret-road',
+        'text-center',
         props.className
       )}
     >
