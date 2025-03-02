@@ -1,6 +1,8 @@
+import copy from 'copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast'
 import { CgSpinner } from 'react-icons/cg'
 import { HiCheckCircle } from 'react-icons/hi2'
+import { IoCopyOutline } from 'react-icons/io5'
 import { useCallback, useEffect, useState } from 'react'
 
 import AppIcon from './assets/images/icon-unwrapped-cropped.png'
@@ -13,10 +15,15 @@ function ContactLink(props) {
       target="_blank"
       rel="noreferrer"
       className={cn(
-        'px-2 py-1 rounded-full bg-orange-200 text-orange-800 hover:bg-orange-500 hover:text-white',
+        'flex items-center justify-center gap-1',
+        'p-2 font-bold',
+        'hover:bg-orange-500 hover:text-white',
+        'font-turret-road',
         props.className
       )}
-    />
+    >
+      {props.children}
+    </a>
   )
 }
 
@@ -60,6 +67,11 @@ function App() {
     )
   }, [])
 
+  const copyAddress = useCallback((address) => {
+    copy(address)
+    toast.success('Copied!')
+  }, [])
+
   /** Get Server State */
   useEffect(() => {
     window.api.getServerState().then(({ status, addresses }) => {
@@ -76,7 +88,12 @@ function App() {
             <>
               <img src={AppIcon} className="h-28" />
 
-              <h1 className="text-2xl font-turret-road">Purrfect Server</h1>
+              <div className="flex flex-col text-center">
+                <h1 className="text-2xl font-turret-road">{import.meta.env.VITE_APP_ORG}</h1>
+                <h2 className="text-3xl text-orange-500 font-turret-road">
+                  {import.meta.env.VITE_APP_SHORT_NAME}
+                </h2>
+              </div>
 
               {/* Toggle Button */}
               <button
@@ -94,20 +111,35 @@ function App() {
                 <div className="flex flex-col w-full gap-2 p-4 bg-orange-200 rounded-xl">
                   {addresses.map((address, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <HiCheckCircle className="w-5 h-5 text-orange-500" />
-                      <span className="font-bold text-orange-800">{address}</span>
+                      <HiCheckCircle className="text-orange-500 size-5 shrink-0" />
+                      <h4 className="font-bold text-orange-800 grow">{address}</h4>
+                      <button
+                        className="text-orange-700 shrink-0"
+                        onClick={() => copyAddress(address)}
+                      >
+                        <IoCopyOutline />
+                      </button>
                     </div>
                   ))}
                 </div>
               ) : null}
 
               {/* Connect */}
-              <div className="grid grid-cols-2 gap-1 text-center">
-                <ContactLink href="https://wa.me/2349018646163">Dev</ContactLink>
-                <ContactLink href="https://t.me/purrfect_community">Channel</ContactLink>
+              <div
+                className={cn(
+                  'grid grid-cols-3 text-center',
+                  'rounded-full',
+                  'bg-orange-200 text-orange-800',
+                  'divide-x divide-orange-300',
+                  'overflow-clip'
+                )}
+              >
+                <ContactLink href={import.meta.env.VITE_APP_DEV_CONTACT}>Dev</ContactLink>
+                <ContactLink href={import.meta.env.VITE_APP_TELEGRAM_CHANNEL}>Channel</ContactLink>
+                <ContactLink href={import.meta.env.VITE_APP_TELEGRAM_GROUP}>Group</ContactLink>
               </div>
 
-              <div className="text-center text-orange-800">v0.0.1</div>
+              <div className="text-lg text-center text-orange-800 font-turret-road">v0.0.1</div>
             </>
           ) : (
             <CgSpinner className="w-5 h-5 mx-auto animate-spin" />
