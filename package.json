@@ -1,5 +1,5 @@
 {
-  "name": "purrfect-server",
+  "name": "purrfect-mirror-server-gui",
   "version": "0.0.1",
   "description": "Purrfect Sync Server",
   "main": "./out/main/index.js",
