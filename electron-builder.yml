@@ -33,6 +33,7 @@ linux:
     - deb
     - pacman
     - rpm
+    - tar.gz
   maintainer: purrfect-farmer.github.io
   category: Utility
 appImage:
