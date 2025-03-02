@@ -1,7 +1,7 @@
 {
   "name": "purrfect-mirror-server-gui",
   "version": "0.0.1",
-  "description": "Purrfect Sync Server",
+  "description": "Purrfect Mirror Server",
   "main": "./out/main/index.js",
   "author": "purrfect-farmer.github.io",
   "homepage": "https://purrfect-farmer.github.io",
