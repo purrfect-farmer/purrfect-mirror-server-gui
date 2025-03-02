@@ -32,17 +32,18 @@ jobs:
           node-version: 'lts/*'
           cache: 'pnpm'
 
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: Install Python
         uses: actions/setup-python@v5
         with:
+          python-version: '3.13'
           cache: 'pip'
 
       - name: Install Python setup tools
         run: |
           pip install setuptools
-
-      - name: Install Dependencies
-        run: pnpm install
 
       - name: build-linux
         if: matrix.os == 'ubuntu-latest'
