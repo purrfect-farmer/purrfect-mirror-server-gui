@@ -83,14 +83,14 @@ function App() {
   return (
     <>
       <div className="flex flex-col justify-center overflow-auto h-dvh">
-        <div className="flex flex-col items-center gap-2 p-4 my-2">
+        <div className="flex flex-col items-center gap-3 p-4 my-2">
           {isRunning !== null ? (
             <>
               <img src={AppIcon} className="h-28" />
 
-              <div className="flex flex-col text-center">
-                <h1 className="text-2xl font-turret-road">{import.meta.env.VITE_APP_ORG}</h1>
-                <h2 className="text-3xl text-orange-500 font-turret-road">
+              <div className="flex flex-col gap-1 text-center">
+                <h1 className="text-2xl leading-none font-turret-road">{import.meta.env.VITE_APP_ORG}</h1>
+                <h2 className="text-3xl leading-none text-orange-500 font-turret-road">
                   {import.meta.env.VITE_APP_SHORT_NAME}
                 </h2>
               </div>
