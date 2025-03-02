@@ -1,34 +1,34 @@
-import { createSyncServer } from './libs/sync'
+import { createMirrorServer } from './libs/mirror'
 
-let sync = null
+let mirror = null
 
 /** Start Server */
-export function startSyncServer() {
+export function startMirrorServer() {
   return new Promise((resolve, reject) => {
-    createSyncServer()
+    createMirrorServer()
       .then((data) => {
         /** Store Server */
-        sync = data
+        mirror = data
 
         /** Resolve Addresses */
-        resolve(sync.addresses)
+        resolve(mirror.addresses)
       })
       .catch(() => reject({ status: false }))
   })
 }
 
 /** Close Server */
-export async function stopSyncServer() {
-  if (sync) {
-    await sync.io.close()
-    sync = null
+export async function stopMirrorServer() {
+  if (mirror) {
+    await mirror.io.close()
+    mirror = null
   }
 }
 
 /** Get Server State */
-export function getSyncServerState() {
+export function getMirrorServerState() {
   return {
-    status: sync !== null,
-    addresses: sync?.addresses
+    status: mirror !== null,
+    addresses: mirror?.addresses
   }
 }

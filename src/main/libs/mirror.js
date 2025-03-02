@@ -2,7 +2,7 @@ import { Server } from 'socket.io'
 import { createServer } from 'http'
 import { networkInterfaces } from 'os'
 
-export function createSyncServer() {
+export function createMirrorServer() {
   return new Promise((resolve, reject) => {
     const PORT = 7777
     const server = createServer()

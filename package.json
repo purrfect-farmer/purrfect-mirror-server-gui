@@ -1,5 +1,5 @@
 {
-  "name": "purrfect-mirror-server",
+  "name": "purrfect-mirror-server-gui",
   "version": "0.0.1",
   "description": "Purrfect Mirror Server",
   "main": "./out/main/index.js",
@@ -7,7 +7,7 @@
   "homepage": "https://purrfect-farmer.github.io",
   "scripts": {
     "format": "prettier --write .",
-    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "lint": "eslint --cache .",
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
     "build": "electron-vite build",
@@ -33,18 +33,20 @@
   "devDependencies": {
     "@electron-toolkit/eslint-config": "^2.0.0",
     "@electron-toolkit/eslint-config-prettier": "^3.0.0",
-    "@tailwindcss/vite": "^4.0.9",
     "@vitejs/plugin-react": "^4.3.4",
-    "electron": "^34.3.0",
+    "electron": "^34.2.0",
     "electron-builder": "^25.1.8",
     "electron-vite": "^3.0.0",
-    "eslint": "^9.21.0",
+    "eslint": "^9.20.1",
     "eslint-plugin-react": "^7.37.4",
-    "prettier": "^3.5.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "prettier": "^3.5.1",
+    "vite": "^6.1.0",
+    "@tailwindcss/vite": "^4.0.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss": "^4.0.9",
-    "vite": "^6.2.0",
     "vite-plugin-ejs": "^1.7.0"
   }
 }

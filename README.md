@@ -1,6 +1,6 @@
-# purrfect-server
+# purrfect-mirror-server-gui
 
-An Electron application with React
+Purrfect Mirror Server (GUI)
 
 ## Recommended IDE Setup
 

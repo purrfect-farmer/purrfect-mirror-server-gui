@@ -3,7 +3,7 @@ import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { join } from 'path'
 
 import icon from '../../resources/icon.png?asset'
-import { getSyncServerState, startSyncServer, stopSyncServer } from './server'
+import { getMirrorServerState, startMirrorServer, stopMirrorServer } from './server'
 
 function createWindow() {
   // Create the browser window.
@@ -52,9 +52,9 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  ipcMain.handle('start-server', () => startSyncServer())
-  ipcMain.handle('stop-server', () => stopSyncServer())
-  ipcMain.handle('get-server-state', () => getSyncServerState())
+  ipcMain.handle('start-server', startMirrorServer)
+  ipcMain.handle('stop-server', stopMirrorServer)
+  ipcMain.handle('get-server-state', getMirrorServerState)
 
   createWindow()
 
@@ -68,9 +68,9 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
+app.on('window-all-closed', async () => {
   if (process.platform !== 'darwin') {
-    stopSyncServer()
+    await stopMirrorServer()
     app.quit()
   }
 })
